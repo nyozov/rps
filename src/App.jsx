@@ -13,7 +13,7 @@ function App() {
     <div className="App bg-gradient-to-r from-[#1f3756] to-[#141539] w-screen h-screen">
       <Title score={score} />
       {page === 1 && <Choice choice={choice} setChoice={setChoice} setPage={setPage} />}
-      {page === 2 && <PicksPage choice={choice} />}
+      {page === 2 && <PicksPage choice={choice} setScore={setScore} score={score} />}
 
       <Rules />
     </div>

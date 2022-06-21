@@ -5,7 +5,7 @@ import Scissors from "./Scissors";
 
 import { randomPicker } from "../randomPicker";
 
-function PicksPage({ choice }) {
+function PicksPage({ choice, score, setScore}) {
   const [randomChoice, setRandomChoice] = useState("");
   const [result, setResults] = useState("");
 
@@ -17,17 +17,29 @@ function PicksPage({ choice }) {
     setResults(rpsHelper())
    
   }, [randomChoice])
-  
+
+  useEffect(() => {
+    if (result === "win"){
+      setScore(prevScore => prevScore+1)
+
+    }
+    else if (result === "lose"){
+      setScore(prevScore => prevScore-1)
+    }
+   
+  }, [result])
 
   const rpsHelper = () => {
     if (
       (randomChoice === "scissors" && choice === "rock") ||
-      (randomChoice === "paper" && choice === "scissors")
+      (randomChoice === "paper" && choice === "scissors") ||
+      (randomChoice === "rock" && choice === "paper")
     ) {
       return "win";
     } else if (
       (choice === "scissors" && randomChoice === "rock") ||
-      (choice === "paper" && randomChoice === "scissors")
+      (choice === "paper" && randomChoice === "scissors") ||
+      (choice === "rock" && randomChoice === "paper")
     ) {
       return "lose";
     }
