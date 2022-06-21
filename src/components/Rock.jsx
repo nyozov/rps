@@ -1,8 +1,10 @@
 import React from 'react'
 
-function Rock() {
+function Rock({handleChoice, absolute, clickable}) {
   return (
-    <div className="border-[15px] absolute bottom-10 shadow-inner border-red-500 bg-white w-32 h-32 flex justify-center cursor-pointer items-center rounded-full">
+    <div
+    onClick={()=>handleChoice('rock')} 
+    className={`border-[15px] ${absolute ? `absolute bottom-10` : ``} shadow-inner border-red-500 bg-white w-32 h-32 flex justify-center ${clickable ? `cursor-pointer` : ``} items-center rounded-full`}>
     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">
       <path
         fill="#3B4262"
