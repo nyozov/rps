@@ -5,7 +5,7 @@ import Scissors from "./Scissors";
 
 import { randomPicker } from "../randomPicker";
 
-function PicksPage({ choice, score, setScore}) {
+function PicksPage({ choice, score, setScore, setPage }) {
   const [randomChoice, setRandomChoice] = useState("");
   const [result, setResults] = useState("");
 
@@ -14,20 +14,16 @@ function PicksPage({ choice, score, setScore}) {
   }, []);
 
   useEffect(() => {
-    setResults(rpsHelper())
-   
-  }, [randomChoice])
+    setResults(rpsHelper());
+  }, [randomChoice]);
 
   useEffect(() => {
-    if (result === "win"){
-      setScore(prevScore => prevScore+1)
-
+    if (result === "win") {
+      setScore((prevScore) => prevScore + 1);
+    } else if (result === "lose") {
+      setScore((prevScore) => prevScore - 1);
     }
-    else if (result === "lose"){
-      setScore(prevScore => prevScore-1)
-    }
-   
-  }, [result])
+  }, [result]);
 
   const rpsHelper = () => {
     if (
@@ -42,9 +38,8 @@ function PicksPage({ choice, score, setScore}) {
       (choice === "rock" && randomChoice === "paper")
     ) {
       return "lose";
-    }
-    else {
-      return "tie"
+    } else {
+      return "tie";
     }
   };
 
@@ -53,18 +48,34 @@ function PicksPage({ choice, score, setScore}) {
       <div className="border flex justify-between p-6 text-white text-center text-xl w-3/4 items-center">
         <div className="p-2">
           <p>You Picked</p>
-          {choice === "rock" && <Rock />}
-          {choice === "scissors" && <Scissors />}
-          {choice === "paper" && <Paper />}
+
+          <div className='mt-6'>
+
+          {choice === "rock" && <Rock result2={result}/>}
+          {choice === "scissors" && <Scissors result2={result}/>}
+          {choice === "paper" && <Paper result2={result}/>}
+          </div>
         </div>
         <div>
-          {result}
+          {result === "lose" && <p className="text-4xl font-bold">You Lose</p>}
+          {result === "win" && <p className="text-4xl font-bold">You Win</p>}
+          {result === "tie" && <p className="text-4xl font-bold">Tie</p>}
+          {result && (
+            <div
+            onClick={()=>setPage(1)}
+            
+            className="bg-white cursor-pointer hover:bg-gray-200 rounded mt-2 p-1 px-8 text-red-500 shadow">
+              Play Again
+            </div>
+          )}
         </div>
         <div>
           <p>The House Picked</p>
-          {randomChoice === "rock" && <Rock />}
-          {randomChoice === "scissors" && <Scissors />}
-          {randomChoice === "paper" && <Paper />}
+          <div className=''>
+          {randomChoice === "rock" && <Rock result={result}/>}
+          {randomChoice === "scissors" && <Scissors result={result}/>}
+          {randomChoice === "paper" && <Paper result={result} />}
+          </div>
           {/* <div className="bg-gray-800 w-32 h-32 rounded-full shadow-lg"></div> */}
         </div>
       </div>

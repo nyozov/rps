@@ -21,6 +21,19 @@ code {
   background:radial-gradient(hsl(214, 47%, 23%) to hsl(237, 49%, 15%));
 }
 
+
+.picked:hover {
+  box-shadow: 0px 0px 15px hsl(150, 100%, 66%);
+}
+
+.winner {
+  
+  animation: mymove 5s infinite;
+}
+
+@keyframes mymove {
+  50% {box-shadow: 0px 0px 30px #FFF;}
+}
 /* 
 ## Colors
 

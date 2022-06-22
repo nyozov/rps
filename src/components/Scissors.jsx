@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Scissors({handleChoice, absolute, clickable}) {
+function Scissors({handleChoice, absolute, clickable, result, result2}) {
   return (
     <div 
     onClick={()=>handleChoice('scissors')} 
     
-    className={`border-[15px] ${absolute ? `absolute top-5 left-0` : ``} shadow-inner border-blue-500 bg-white w-32 h-32 flex justify-center ${clickable ? `cursor-pointer` : ``} items-center rounded-full`}>
+    className={`border-[15px] ${result2 === 'win' ? `winner` : ``} ${result === 'lose' ? `winner` : ``} ${absolute ? `absolute top-5 left-0` : ``} shadow-inner border-blue-500 bg-white w-32 h-32 flex justify-center ${clickable ? `cursor-pointer picked` : ``} items-center rounded-full`}>
           <svg xmlns="http://www.w3.org/2000/svg" width="51" height="58">
             <path
               fill="#3B4262"
