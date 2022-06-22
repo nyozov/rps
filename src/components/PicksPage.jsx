@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Rock from "./Rock";
 import Paper from "./Paper";
 import Scissors from "./Scissors";
+import { motion } from "framer-motion";
 
 import { randomPicker } from "../randomPicker";
 
@@ -44,41 +45,73 @@ function PicksPage({ choice, score, setScore, setPage }) {
   };
 
   return (
-    <div className="w-full flex justify-center items-center">
-      <div className="border flex justify-between p-6 text-white text-center text-xl w-3/4 items-center">
+    <div className="w-full flex flex-col justify-center items-center">
+      <div className="flex justify-between p-6 text-white text-center text-xl sm:w-3/4 items-center">
         <div className="p-2">
           <p>You Picked</p>
 
-          <div className='mt-6'>
-
-          {choice === "rock" && <Rock result2={result}/>}
-          {choice === "scissors" && <Scissors result2={result}/>}
-          {choice === "paper" && <Paper result2={result}/>}
+          <div className="mt-6">
+            {choice === "rock" && <Rock result2={result} />}
+            {choice === "scissors" && <Scissors result2={result} />}
+            {choice === "paper" && <Paper result2={result} />}
           </div>
         </div>
-        <div>
+
+        <motion.div
+          className="hidden md:block
+        "
+          initial={{ opacity: 0, y: -100 }}
+          transition={{ delay: 0.5 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
           {result === "lose" && <p className="text-4xl font-bold">You Lose</p>}
           {result === "win" && <p className="text-4xl font-bold">You Win</p>}
           {result === "tie" && <p className="text-4xl font-bold">Tie</p>}
           {result && (
             <div
-            onClick={()=>setPage(1)}
-            
-            className="bg-white cursor-pointer hover:bg-gray-200 rounded mt-2 p-1 px-8 text-red-500 shadow">
+              onClick={() => setPage(1)}
+              className="bg-white cursor-pointer text-[#2a46c0] rounded mt-2 p-1 px-8 hover:text-red-500 shadow"
+            >
               Play Again
             </div>
           )}
-        </div>
+        </motion.div>
+
         <div>
-          <p>The House Picked</p>
-          <div className=''>
-          {randomChoice === "rock" && <Rock result={result}/>}
-          {randomChoice === "scissors" && <Scissors result={result}/>}
-          {randomChoice === "paper" && <Paper result={result} />}
-          </div>
+          <p className="text-lg font-bold">The House Picked</p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            transition={{ delay: 0.2 }}
+            animate={{ opacity: 1 }}
+            className="mt-6"
+          >
+            {randomChoice === "rock" && <Rock result={result} />}
+            {randomChoice === "scissors" && <Scissors result={result} />}
+            {randomChoice === "paper" && <Paper result={result} />}
+          </motion.div>
           {/* <div className="bg-gray-800 w-32 h-32 rounded-full shadow-lg"></div> */}
         </div>
+        
       </div>
+      <motion.div
+          className="md:hidden mt-24 w-full flex justify-center flex-col items-center
+        "
+          initial={{ opacity: 0, y: -100 }}
+          transition={{ delay: 0.5 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          {result === "lose" && <p className="text-4xl font-bold text-white text-center">You Lose</p>}
+          {result === "win" && <p className="text-4xl font-bold text-white text-center">You Win</p>}
+          {result === "tie" && <p className="text-4xl font-bold text-white text-center">Tie</p>}
+          {result && (
+            <div
+              onClick={() => setPage(1)}
+              className="bg-white cursor-pointer w-7/12 flex justify-center items-center rounded-xl text-2xl font-semibold mt-2 p-4 px-8 text-[#2a46c0] hover:text-red-500 shadow-lg"
+            >
+              Play Again
+            </div>
+          )}
+        </motion.div>
     </div>
   );
 }

@@ -1,18 +1,23 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Rules() {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <div>
+    <div className="flex justify-center items-center">
       <div
         onClick={() => (modalOpen ? setModalOpen(false) : setModalOpen(true))}
-        className="absolute bottom-5 right-5 text-gray-200 border border-gray-200 hover:text-white hover:border-white duration-150 font-semibold cursor-pointer rounded p-1 px-8"
+        className=" flex justify-center items-center w-1/4 md:w-1/12 absolute bottom-10 right-1/2 transform md:transform-none translate-x-1/2 md:bottom-5 md:right-5 text-gray-200 border border-gray-200 hover:text-white hover:border-white duration-150 font-semibold cursor-pointer rounded p-1 px-8"
       >
         Rules
       </div>
+      <AnimatePresence>
       {modalOpen && (
-        <div
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
           onClick={() => setModalOpen(false)}
           className="bg-[rgba(0,0,0,0.4)] w-screen h-screen absolute top-0 left-0"
         >
@@ -190,8 +195,9 @@ function Rules() {
               </g>
             </svg>
           </div>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </div>
   );
 }
