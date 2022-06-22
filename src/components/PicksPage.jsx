@@ -46,11 +46,11 @@ function PicksPage({ choice, score, setScore, setPage }) {
 
   return (
     <div className="w-full flex flex-col justify-center items-center">
-      <div className="flex justify-between p-6 text-white text-center text-xl sm:w-3/4 items-center">
-        <div className="p-2">
+      <div className="flex justify-between w-11/12 p-6 text-white text-center text-xl sm:w-3/4 items-center">
+        <div className="p-2 flex flex-col-reverse md:flex-col">
           <p>You Picked</p>
 
-          <div className="mt-6">
+          <div className="mb-6 md:mt-6">
             {choice === "rock" && <Rock result2={result} />}
             {choice === "scissors" && <Scissors result2={result} />}
             {choice === "paper" && <Paper result2={result} />}
@@ -77,13 +77,13 @@ function PicksPage({ choice, score, setScore, setPage }) {
           )}
         </motion.div>
 
-        <div>
+        <div className='p-2 flex flex-col-reverse md:flex-col'>
           <p className="text-lg font-bold">The House Picked</p>
           <motion.div
             initial={{ opacity: 0 }}
             transition={{ delay: 0.2 }}
             animate={{ opacity: 1 }}
-            className="mt-6"
+            className="mb-6 md:mt-6"
           >
             {randomChoice === "rock" && <Rock result={result} />}
             {randomChoice === "scissors" && <Scissors result={result} />}

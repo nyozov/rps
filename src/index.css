@@ -34,6 +34,10 @@ code {
 @keyframes mymove {
   50% {box-shadow: 0px 0px 30px #FFF;}
 }
+
+.shadow-inner-test{
+  box-shadow: inset 0px 4px 5px 0 rgb(0 0 0 / 0.5);
+}
 /* 
 ## Colors
 

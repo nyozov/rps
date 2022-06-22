@@ -9,7 +9,7 @@ function Choice({ setChoice, setPage }) {
     setPage(2);
   };
   return (
-    <div className="w-full flex justify-center items-center mt-24">
+    <div className="w-full flex justify-center items-center mt-12">
       <motion.div 
       initial={{opacity:0}}
       transition={{delay:0.2}}

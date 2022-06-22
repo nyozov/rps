@@ -4,7 +4,7 @@ function Rock({handleChoice, absolute, clickable, result, result2}) {
   return (
     <div
     onClick={()=>handleChoice('rock')} 
-    className={`border-[15px] ${result2 === 'win' ? `winner` : ``} ${result === 'lose' ? `winner` : ``} ${absolute ? `absolute bottom-10` : ``} shadow-inner border-red-500 bg-white w-32 h-32 flex justify-center ${clickable ? `cursor-pointer picked` : ``} items-center rounded-full`}>
+    className={`border-[15px] ${result2 === 'win' ? `winner` : ``} ${result === 'lose' ? `winner` : ``} ${absolute ? `absolute bottom-10 shadow-inner-test` : ``}  border-red-500 bg-white w-32 h-32 flex justify-center ${clickable ? `cursor-pointer picked` : ``} items-center rounded-full`}>
     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">
       <path
         fill="#3B4262"

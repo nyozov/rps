@@ -8,7 +8,7 @@ function Rules() {
     <div className="flex justify-center items-center">
       <div
         onClick={() => (modalOpen ? setModalOpen(false) : setModalOpen(true))}
-        className=" flex justify-center items-center w-1/4 md:w-1/12 absolute bottom-10 right-1/2 transform md:transform-none translate-x-1/2 md:bottom-5 md:right-5 text-gray-200 border border-gray-200 hover:text-white hover:border-white duration-150 font-semibold cursor-pointer rounded p-1 px-8"
+        className=" flex justify-center items-center w-1/4 md:w-1/12 absolute bottom-10 right-1/2 transform md:transform-none translate-x-1/2 md:bottom-5 md:right-5 text-gray-200 border border-gray-200 hover:text-white hover:border-white duration-150 font-semibold cursor-pointer rounded-lg p-2 md:p-1 px-8"
       >
         Rules
       </div>
@@ -23,7 +23,7 @@ function Rules() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className=" rounded-lg mt-12 absolute p-12 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[rgba(255,255,255,0.97)]"
+            className=" rounded-lg mt-12 absolute p-8 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[rgba(255,255,255,0.97)]"
           >
             <div className="flex justify-between p-4 mb-6">
               <p className="text-2xl font-bold">Rules</p>
