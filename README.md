@@ -13,15 +13,13 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-
+![mobile-main](https://github.com/nyozov/rps/blob/master/src/assets/mobile-screen.png?raw=true) 
+![mobile-picks](https://github.com/nyozov/rps/blob/master/src/assets/mobile-picks.png?raw=true)
 
 
 ### Links
 
 - Live Site URL: [https://rpstest.netlify.app/](https://rpstest.netlify.app/)
-
 
 
 ### Built with
